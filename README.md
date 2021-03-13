@@ -1,6 +1,6 @@
-Learning all about Node Js and its workflows.
+Learning NodeJS and its Workflows.
 
-#Http modules
+## Http modules
 
 ```js
 // What is http
