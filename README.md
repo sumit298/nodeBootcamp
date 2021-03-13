@@ -143,8 +143,13 @@ For using Express Router outside the main file, write
 const express = require("express");
 const router = express.Router();
 
+// Router api endpoints Examples.
 router.get("/", (req, res) => {
   res.send("Hello");
+});
+
+router.get("/:id", (req, res) => {
+  res.send(`Hello ${req.params.id}`);
 });
 
 module.exports = router;
@@ -158,3 +163,11 @@ const bootcamps = require("./Router/bootcamp");
 
 app.use("/api/v1/bootcamps", bootcamps);
 ```
+
+### Controllers
+
+Controllers are the callback functions we passed to the `router` methods.
+
+Why we need controllers ? I am sure, you are thinking about this?
+
+Well in big api's or for reusing purposes or keeping routes file clean, we keep routes callback methods separate in Controllers folder. 
