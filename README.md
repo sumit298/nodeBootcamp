@@ -170,4 +170,30 @@ Controllers are the callback functions we passed to the `router` methods.
 
 Why we need controllers ? I am sure, you are thinking about this?
 
-Well in big api's or for reusing purposes or keeping routes file clean, we keep routes callback methods separate in Controllers folder. 
+Well in big api's or for reusing purposes or keeping routes file clean, we keep routes callback methods separate in Controllers folder.
+
+In controllers folder we will create `bootcampController.js` file and in that file I am gonna export functions. for Ex.
+
+```js
+exports.getBootcamps = (req, res, next) => {
+  res.status(200).json({ success: true, msg: "Show all bootcamps" });
+};
+```
+
+### Note(optional):
+
+Generally, `Get` route methods should kept public for users and `Post` i.e adding, `Put` i.e updating and `Delete` should be kept private for admin and managers. But it depends on context of the project.
+
+Now in `Router/bootcamp.js`,
+
+Just import that methods from Controllers and write.
+
+```js
+router.route("/").get(getBootcamps).post(postBootCamp);
+
+router
+  .route("/:id")
+  .get(getBookCampById)
+  .put(updateBootCampById)
+  .delete(deleteBootCampById);
+```
