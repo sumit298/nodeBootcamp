@@ -4,7 +4,6 @@ const dotenv = require("dotenv");
 dotenv.config({ path: "./config/config.env" });
 const app = express();
 
-app.use();
 
 app.get("/", (req, res) => {
   res.send("<h1>Hello World</h1>");
