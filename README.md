@@ -106,12 +106,10 @@ app.post("/api/v1/bootcamps", (req, res) => {
 
 // For updating bootcamp with id
 app.put("/api/v1/bootcamps/:id", (req, res) => {
-  res
-    .status(200)
-    .json({
-      success: true,
-      msg: `Update the bootcamp with Id ${req.params.id}`,
-    });
+  res.status(200).json({
+    success: true,
+    msg: `Update the bootcamp with Id ${req.params.id}`,
+  });
 });
 
 // For deleting bootcamp with id
@@ -132,6 +130,31 @@ app.listen(port, () =>
 ```
 
 ### Note : Difference between PUT and PATCH
+
 - The main difference between the PUT and PATCH method is that the PUT method uses the request URI to supply a modified version of the requested resource which replaces the original version of the resource, whereas the PATCH method supplies a set of instructions to modify the resource.
 
 - In short - put replaces original content and patch modifies the original content.
+
+### Router
+
+For using Express Router outside the main file, write
+
+```js
+const express = require("express");
+const router = express.Router();
+
+router.get("/", (req, res) => {
+  res.send("Hello");
+});
+
+module.exports = router;
+```
+
+Now, for the main file, we would write
+
+```js
+const bootcamps = require("./Router/bootcamp");
+// then use it with middlewares
+
+app.use("/api/v1/bootcamps", bootcamps);
+```
